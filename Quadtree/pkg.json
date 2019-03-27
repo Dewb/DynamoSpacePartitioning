@@ -1,0 +1,20 @@
+{
+    "license": "",
+    "file_hash": null,
+    "name": "Quadtree",
+    "version": "1.0.0",
+    "description": "Fast neighborhood calculations in 2 or 3 dimensions using quadtree/octree data structures",
+    "group": "",
+    "keywords": null,
+    "dependencies": [],
+    "contents": "",
+    "engine_version": "2.1.0.0",
+    "engine": "dynamo",
+    "engine_metadata": "",
+    "site_url": "",
+    "repository_url": "",
+    "contains_binaries": true,
+    "node_libraries": [
+      "Quadtree, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null"
+    ]
+  }
