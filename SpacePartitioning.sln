@@ -3,9 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.28307.489
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SpacePartitioning", "Quadtree\SpacePartitioning.csproj", "{84EA8E3C-0CF6-49B7-A581-846EC3194FE0}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SpacePartitioning", "SpacePartitioning\SpacePartitioning.csproj", "{84EA8E3C-0CF6-49B7-A581-846EC3194FE0}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SpacePartitioning.Tests", "Quadtree.Tests\SpacePartitioning.Tests.csproj", "{F26E71B9-7AD1-4F24-8250-7DBB3E9D5EF2}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SpacePartitioning.Tests", "SpacePartitioning.Tests\SpacePartitioning.Tests.csproj", "{F26E71B9-7AD1-4F24-8250-7DBB3E9D5EF2}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

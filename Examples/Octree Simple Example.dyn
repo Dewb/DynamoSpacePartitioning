@@ -51,7 +51,7 @@
         }
       ],
       "Replication": "Auto",
-      "Description": "Cuboid.ByCorners (lowPoint: Point = Autodesk.DesignScript.Geometry.Point.ByCoordinates(0, 0, 0), highPoint: Point = Autodesk.DesignScript.Geometry.Point.ByCoordinates(1, 1, 1)): Cuboid"
+      "Description": "Create an Cuboid spanning from low Point to high Point.\n\nCuboid.ByCorners (lowPoint: Point = Autodesk.DesignScript.Geometry.Point.ByCoordinates(0, 0, 0), highPoint: Point = Autodesk.DesignScript.Geometry.Point.ByCoordinates(1, 1, 1)): Cuboid"
     },
     {
       "ConcreteType": "Dynamo.Graph.Nodes.ZeroTouch.DSFunction, DynamoCore",
@@ -81,7 +81,7 @@
         }
       ],
       "Replication": "Auto",
-      "Description": "BoundingBox.ByGeometry (geom: Geometry[]): BoundingBox"
+      "Description": "Create an axis-aligned BoundingBox around input Geometry.\n\nBoundingBox.ByGeometry (geom: Geometry[]): BoundingBox"
     },
     {
       "ConcreteType": "Dynamo.Graph.Nodes.CodeBlockNodeModel, DynamoCore",
@@ -176,7 +176,7 @@
         }
       ],
       "Replication": "Auto",
-      "Description": "BoundingBox.ByCorners (min: Point = Autodesk.DesignScript.Geometry.Point.ByCoordinates(0, 0, 0), max: Point = Autodesk.DesignScript.Geometry.Point.ByCoordinates(1, 1, 1)): BoundingBox"
+      "Description": "Creates the an axis-aligned BoundingBox spanning between the minimum Point and the maximum Point.\n\nBoundingBox.ByCorners (min: Point = Autodesk.DesignScript.Geometry.Point.ByCoordinates(0, 0, 0), max: Point = Autodesk.DesignScript.Geometry.Point.ByCoordinates(1, 1, 1)): BoundingBox"
     },
     {
       "ConcreteType": "Dynamo.Graph.Nodes.CodeBlockNodeModel, DynamoCore",
@@ -402,7 +402,7 @@
       "MaximumValue": 8.0,
       "MinimumValue": 0.0,
       "StepValue": 0.1,
-      "InputValue": 0.1,
+      "InputValue": 1.5,
       "Id": "49fe489f6812483593eb58199e3a94e4",
       "Inputs": [],
       "Outputs": [
@@ -534,7 +534,7 @@
       "MaximumValue": 3.0,
       "MinimumValue": 0.0,
       "StepValue": 0.02,
-      "InputValue": 2.2,
+      "InputValue": 1.32,
       "Id": "bdd61e061faf4332bd7f7a8da5b87586",
       "Inputs": [],
       "Outputs": [
@@ -652,7 +652,7 @@
         }
       ],
       "Replication": "Auto",
-      "Description": "Sphere.ByCenterPointRadius (centerPoint: Point = Autodesk.DesignScript.Geometry.Point.ByCoordinates(0, 0, 0), radius: double = 1): Sphere"
+      "Description": "Create a Solid Sphere cetered at the input Point, with given radius.\n\nSphere.ByCenterPointRadius (centerPoint: Point = Autodesk.DesignScript.Geometry.Point.ByCoordinates(0, 0, 0), radius: double = 1): Sphere"
     },
     {
       "ConcreteType": "CoreNodeModels.Input.ColorPalette, CoreNodeModels",
@@ -1265,7 +1265,7 @@
         "Height": 360.0110834127006,
         "FontSize": 36.0,
         "InitialTop": -433.10620889691756,
-        "InitialHeight": 713.05533148659958,
+        "InitialHeight": 342.92535406342012,
         "TextblockHeight": 43.2,
         "Background": "#FFC1D676"
       },
@@ -1282,7 +1282,7 @@
         "Height": 250.72684995995292,
         "FontSize": 36.0,
         "InitialTop": 2.6656992830899071,
-        "InitialHeight": 184.32684995995291,
+        "InitialHeight": 206.72684995995292,
         "TextblockHeight": 86.4,
         "Background": "#FFA4E1FF"
       },
@@ -1306,7 +1306,7 @@
         "Height": 361.9833969453511,
         "FontSize": 36.0,
         "InitialTop": 733.17064031809161,
-        "InitialHeight": 425.31379614838431,
+        "InitialHeight": 385.98339694535105,
         "TextblockHeight": 43.2,
         "Background": "#FFFFB8D8"
       },
@@ -1329,7 +1329,7 @@
         "Height": 438.02833041151234,
         "FontSize": 36.0,
         "InitialTop": 290.07747936243516,
-        "InitialHeight": 371.62833041151237,
+        "InitialHeight": 394.02833041151234,
         "TextblockHeight": 86.4,
         "Background": "#FFBB87C6"
       }
