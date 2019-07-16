@@ -7,8 +7,8 @@
     <ProjectGuid>{84EA8E3C-0CF6-49B7-A581-846EC3194FE0}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Quadtree</RootNamespace>
-    <AssemblyName>Quadtree</AssemblyName>
+    <RootNamespace>SpacePartitioning</RootNamespace>
+    <AssemblyName>SpacePartitioning</AssemblyName>
     <TargetFrameworkVersion>v4.7</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <Deterministic>true</Deterministic>
@@ -54,9 +54,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="src\QuadtreeOptions.cs" />
-    <Compile Include="src\SimpleQuadtree.cs" />
-    <Compile Include="src\DynamoQuadtree.cs" />
+    <Compile Include="src\OctreeOptions.cs" />
+    <Compile Include="src\SimpleOctree.cs" />
+    <Compile Include="src\DynamoOctree.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="src\Utils.cs" />
   </ItemGroup>
@@ -67,7 +67,7 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Quadtree_DynamoCustomization.xml">
+    <Content Include="SpacePartitioning_DynamoCustomization.xml">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
   </ItemGroup>

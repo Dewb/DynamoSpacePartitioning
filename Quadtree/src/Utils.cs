@@ -2,7 +2,7 @@
 using Autodesk.DesignScript.Runtime;
 using System;
 
-namespace DynamoQuadtree
+namespace SpacePartitioning
 {
     [IsVisibleInDynamoLibrary(false)]
     class Utils
@@ -55,6 +55,45 @@ namespace DynamoQuadtree
                 Point.ByCoordinates(Math.Min(a.MinPoint.X, b.MinPoint.X), Math.Min(a.MinPoint.Y, b.MinPoint.Y), Math.Min(a.MinPoint.Z, b.MinPoint.Z)),
                 Point.ByCoordinates(Math.Max(a.MaxPoint.X, b.MaxPoint.X), Math.Max(a.MaxPoint.Y, b.MaxPoint.Y), Math.Max(a.MaxPoint.Z, b.MaxPoint.Z))
             );
+        }
+
+        public static double DistanceSquared(Point a, Point b)
+        {
+            return Math.Pow(b.X - a.X, 2) + Math.Pow(b.Y - a.Y, 2) + Math.Pow(b.Z - a.Z, 2);
+        }
+
+        public static bool BoundingBoxIntersectsSphere(BoundingBox bbox, Point p, double radius)
+        {
+            double d = radius * radius;
+
+            if (p.X < bbox.MinPoint.X)
+            {
+                d -= Math.Pow(p.X - bbox.MinPoint.X, 2);
+            }
+            else if (p.X > bbox.MaxPoint.X)
+            {
+                d -= Math.Pow(p.X - bbox.MaxPoint.X, 2);
+            }
+
+            if (p.Y < bbox.MinPoint.Y)
+            {
+                d -= Math.Pow(p.Y - bbox.MinPoint.Y, 2);
+            }
+            else if (p.Y > bbox.MaxPoint.Y)
+            {
+                d -= Math.Pow(p.Y - bbox.MaxPoint.Y, 2);
+            }
+
+            if (p.Z < bbox.MinPoint.Z)
+            {
+                d -= Math.Pow(p.Z - bbox.MinPoint.Z, 2);
+            }
+            else if (p.Z > bbox.MaxPoint.Z)
+            {
+                d -= Math.Pow(p.Z - bbox.MaxPoint.Z, 2);
+            }
+
+            return d > 0;
         }
     }
 }

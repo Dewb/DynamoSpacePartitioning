@@ -1,11 +1,11 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <doc>
   <assembly>
-    <name>Quadtree</name>
+    <name>SpacePartitioning</name>
   </assembly>
   <namespaces>
-    <namespace name="DynamoQuadtree">
-      <category>Quadtree</category>
+    <namespace name="SpacePartitioning.Octree">
+      <category>Octree</category>
     </namespace>
   </namespaces>
 </doc>

@@ -1,9 +1,9 @@
 ﻿using Autodesk.DesignScript.Runtime;
 
-namespace DynamoQuadtree
+namespace SpacePartitioning
 {
     [IsVisibleInDynamoLibrary(false)]
-    public class QuadtreeOptions
+    public class OctreeOptions
     {
         public int LeafCapacity = 3;
     }

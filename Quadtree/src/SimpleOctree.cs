@@ -3,21 +3,21 @@ using System.Collections.Generic;
 using Autodesk.DesignScript.Geometry;
 using Autodesk.DesignScript.Runtime;
 
-namespace DynamoQuadtree
+namespace SpacePartitioning
 {
     [IsVisibleInDynamoLibrary(false)]
-    public class SimpleQuadtree
+    public class SimpleOctree
     {
         List<object> _objectReferences;
-        SimpleQuadtreeNode _rootNode;
+        SimpleOctreeNode _rootNode;
 
-        public QuadtreeOptions Options;
+        public OctreeOptions Options;
 
-        public SimpleQuadtree(BoundingBox worldBox, QuadtreeOptions options)
+        public SimpleOctree(BoundingBox worldBox, OctreeOptions options)
         {
             Options = options;
             _objectReferences = new List<object>();
-            _rootNode = new SimpleQuadtreeNode(this, worldBox);
+            _rootNode = new SimpleOctreeNode(this, worldBox);
         }
 
         public void Add(object obj, BoundingBox boundingBox)
@@ -27,56 +27,62 @@ namespace DynamoQuadtree
             _rootNode.Add(objectIndex, boundingBox);
         }
 
-        public List<object> Query(BoundingBox searchBox)
+        public List<object> QueryRange(BoundingBox searchBox)
         {
             var ret = new List<object>();
-            foreach (int index in _rootNode.Query(searchBox))
+            foreach (int index in _rootNode.QueryRange(searchBox))
             {
                 ret.Add(_objectReferences[index]);
             }
             return ret;
         }
 
-        public List<object> Query(Vector ray)
+        public List<object> QueryRay(Point rayPoint, Vector rayVector)
         {
             var ret = new List<object>();
-            foreach (int index in _rootNode.Query(ray))
+            foreach (int index in _rootNode.QueryRay(rayPoint, rayVector))
             {
                 ret.Add(_objectReferences[index]);
             }
             return ret;
         }
 
-        public List<object> Query(Point origin, double radius)
+        public List<object> QueryRadius(Point origin, double radius)
         {
             var ret = new List<object>();
-            foreach (int index in _rootNode.Query(origin, radius))
+            foreach (int index in _rootNode.QueryRadius(origin, radius))
             {
                 ret.Add(_objectReferences[index]);
             }
             return ret;
         }
 
-        public List<object> Query(Point testPoint)
+        public List<object> QueryHit(Point testPoint)
         {
             var ret = new List<object>();
-            foreach (int index in _rootNode.Query(testPoint))
+            foreach (int index in _rootNode.QueryHit(testPoint))
             {
                 ret.Add(_objectReferences[index]);
             }
             return ret;
         }
 
-        private class SimpleQuadtreeNode
+        public object QueryNearestNeighbor(Point testPoint)
         {
-            SimpleQuadtree _parent;
-            List<SimpleQuadtreeNode> _childNodes = null;
+            int index = _rootNode.QueryNearestNeighbor(testPoint);
+            return _objectReferences[index];
+        }
+
+        private class SimpleOctreeNode
+        {
+            SimpleOctree _parent;
+            List<SimpleOctreeNode> _childNodes = null;
             List<Tuple<int, BoundingBox>> _childObjects;
             BoundingBox _boundingBox;
             Point _origin;
             Vector _halfDimension;
 
-            public SimpleQuadtreeNode(SimpleQuadtree parent, BoundingBox nodeBox)
+            public SimpleOctreeNode(SimpleOctree parent, BoundingBox nodeBox)
             {
                 _parent = parent;
                 _boundingBox = nodeBox;
@@ -130,7 +136,7 @@ namespace DynamoQuadtree
                     return;
                 }
 
-                _childNodes = new List<SimpleQuadtreeNode>();
+                _childNodes = new List<SimpleOctreeNode>();
                 for (int i = 0; i < 8; ++i)
                 {
                     double x = _origin.X + _halfDimension.X * ((i & 4) != 0 ? .5 : -.5);
@@ -138,7 +144,7 @@ namespace DynamoQuadtree
                     double z = _origin.Z + _halfDimension.Z * ((i & 1) != 0 ? .5 : -.5);
                     Point newOrigin = Point.ByCoordinates(x, y, z);
                     Vector newHalfDimension = _halfDimension.Scale(0.5);
-                    _childNodes.Add(new SimpleQuadtreeNode(_parent, BoundingBox.ByCorners(newOrigin.Subtract(newHalfDimension), newOrigin.Add(newHalfDimension))));
+                    _childNodes.Add(new SimpleOctreeNode(_parent, BoundingBox.ByCorners(newOrigin.Subtract(newHalfDimension), newOrigin.Add(newHalfDimension))));
                 }
 
                 var oldChildren = new List<Tuple<int, BoundingBox>>();
@@ -155,7 +161,27 @@ namespace DynamoQuadtree
                 }
             }
 
-            public List<int> Query(BoundingBox searchBox)
+            private List<int> GetAllChildObjects()
+            {
+                var ret = new List<int>();
+
+                foreach (var childObject in _childObjects)
+                {
+                    ret.Add(childObject.Item1);
+                }
+
+                if (!IsLeaf())
+                {
+                    foreach (var childNode in _childNodes)
+                    {
+                        ret.AddRange(childNode.GetAllChildObjects());
+                    }
+                }
+
+                return ret;
+            }
+
+            public List<int> QueryRange(BoundingBox searchBox)
             {
                 var ret = new List<int>();
 
@@ -165,7 +191,7 @@ namespace DynamoQuadtree
                     {
                         if (searchBox.Intersects(childNode._boundingBox))
                         {
-                            ret.AddRange(childNode.Query(searchBox));
+                            ret.AddRange(childNode.QueryRange(searchBox));
                         }
                     }
                 }
@@ -181,19 +207,40 @@ namespace DynamoQuadtree
                 return ret;
             }
 
-            public List<int> Query(Vector ray)
+            public List<int> QueryRay(Point rayPoint, Vector rayVector)
+            {
+                throw new NotImplementedException();
+                //var ret = new List<int>();
+                //return ret;
+            }
+
+            public List<int> QueryRadius(Point origin, double radius)
             {
                 var ret = new List<int>();
+
+                foreach (var obj in _childObjects)
+                {
+                    if (Utils.BoundingBoxIntersectsSphere(obj.Item2, origin, radius))
+                    {
+                        ret.Add(obj.Item1);
+                    }
+                }
+
+                if (!IsLeaf())
+                {
+                    foreach (var node in _childNodes)
+                    {
+                        if (Utils.BoundingBoxIntersectsSphere(node._boundingBox, origin, radius))
+                        {
+                            ret.AddRange(node.QueryRadius(origin, radius));
+                        }
+                    }
+                }
+
                 return ret;
             }
 
-            public List<int> Query(Point origin, double radius)
-            {
-                var ret = new List<int>();
-                return ret;
-            }
-
-            public List<int> Query(Point testPoint)
+            public List<int> QueryHit(Point testPoint)
             {
                 var ret = new List<int>();
 
@@ -203,7 +250,7 @@ namespace DynamoQuadtree
                     {
                         if (childNode._boundingBox.Contains(testPoint))
                         {
-                            ret.AddRange(childNode.Query(testPoint));
+                            ret.AddRange(childNode.QueryHit(testPoint));
                         }
                     }
                 }
@@ -219,6 +266,12 @@ namespace DynamoQuadtree
                 return ret;
             }
 
+            public int QueryNearestNeighbor(Point testPoint)
+            {
+                throw new NotImplementedException();
+                //var ret = new List<int>();
+                //return ret;
+            }
         }
     }
 }
