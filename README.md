@@ -24,5 +24,5 @@ A Dynamo package for common spatial search and intersection tests on large amoun
 ## In Use
 *Examples/Octree Simple Example.dyn*
 
-![Screenshot of Octree Simple Example.dyn graph in Examples folder](Examples/SimpleExample.png)
+![Screenshot of Octree Simple Example.dyn graph in Examples folder](Examples/SimpleExample.PNG)
 
