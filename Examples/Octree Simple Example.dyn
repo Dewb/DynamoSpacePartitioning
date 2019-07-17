@@ -510,12 +510,12 @@
     {
       "ConcreteType": "Dynamo.Graph.Nodes.CodeBlockNodeModel, DynamoCore",
       "NodeType": "CodeBlockNode",
-      "Code": "p = Point.ByCoordinates(5,5,5);",
+      "Code": "p = Point.ByCoordinates(5.5,5.5,5.5);",
       "Id": "00a75ea07371402aa1b2858998f16c7d",
       "Inputs": [],
       "Outputs": [
         {
-          "Id": "be702a03d5374e3aab1e576f1f065025",
+          "Id": "9b5a585976c34fbfb86fa714448fec29",
           "Name": "",
           "Description": "p",
           "UsingDefaultValue": false,
@@ -534,7 +534,7 @@
       "MaximumValue": 3.0,
       "MinimumValue": 0.0,
       "StepValue": 0.02,
-      "InputValue": 1.32,
+      "InputValue": 1.6,
       "Id": "bdd61e061faf4332bd7f7a8da5b87586",
       "Inputs": [],
       "Outputs": [
@@ -927,14 +927,14 @@
       "Id": "7dafbe389f7948068b8426f47b602ebf"
     },
     {
-      "Start": "be702a03d5374e3aab1e576f1f065025",
+      "Start": "9b5a585976c34fbfb86fa714448fec29",
       "End": "dd33abc218cc4231b33173cbef184e3e",
-      "Id": "d8a69c0f99c44e81b0bb04c74d9bb707"
+      "Id": "82b50dcb886245ddbd12302c0267dd3b"
     },
     {
-      "Start": "be702a03d5374e3aab1e576f1f065025",
+      "Start": "9b5a585976c34fbfb86fa714448fec29",
       "End": "470eedec997845e8be3da7859d15627e",
-      "Id": "bd88e50c69b74d0cad4d38613969abf9"
+      "Id": "1a38f8d7c69e488ebdd8788d4004e911"
     },
     {
       "Start": "3f8d29d894b744428da078552762739e",
@@ -1154,8 +1154,8 @@
         "IsSetAsInput": false,
         "IsSetAsOutput": false,
         "Excluded": false,
-        "X": -779.42218937416487,
-        "Y": 459.50981673278739
+        "X": -782.08340956008487,
+        "Y": 467.49347729054671
       },
       {
         "ShowGeometry": true,
@@ -1174,8 +1174,8 @@
         "IsSetAsInput": false,
         "IsSetAsOutput": false,
         "Excluded": false,
-        "X": -19.436346545736342,
-        "Y": 290.24087378483944
+        "X": 23.143176428981405,
+        "Y": 288.91026369187966
       },
       {
         "ShowGeometry": true,
@@ -1184,8 +1184,8 @@
         "IsSetAsInput": false,
         "IsSetAsOutput": false,
         "Excluded": false,
-        "X": -176.78099003824741,
-        "Y": 345.12854011943648
+        "X": -128.87902669168989,
+        "Y": 345.12854011943637
       },
       {
         "ShowGeometry": false,
@@ -1194,8 +1194,8 @@
         "IsSetAsInput": false,
         "IsSetAsOutput": false,
         "Excluded": false,
-        "X": -436.41335258783727,
-        "Y": 465.71801163314592
+        "X": -396.49504979903929,
+        "Y": 468.37923181906592
       },
       {
         "ShowGeometry": true,
@@ -1204,8 +1204,8 @@
         "IsSetAsInput": false,
         "IsSetAsOutput": false,
         "Excluded": false,
-        "X": -162.28462675771402,
-        "Y": 539.1058097739475
+        "X": -133.01120471259537,
+        "Y": 533.78336940210772
       },
       {
         "ShowGeometry": true,
@@ -1214,8 +1214,8 @@
         "IsSetAsInput": false,
         "IsSetAsOutput": false,
         "Excluded": false,
-        "X": -11.593033730001707,
-        "Y": 465.58960213791136
+        "X": 28.325269058796266,
+        "Y": 464.25899204495147
       },
       {
         "ShowGeometry": true,
@@ -1244,8 +1244,8 @@
         "IsSetAsInput": false,
         "IsSetAsOutput": false,
         "Excluded": false,
-        "X": -436.41335258783761,
-        "Y": 290.07747936243516
+        "X": -391.17260942719986,
+        "Y": 275.44076833987606
       }
     ],
     "Annotations": [
@@ -1324,11 +1324,11 @@
           "c4351d3248b04ac6ab259664cfa77761"
         ],
         "Left": -795.034178050732,
-        "Top": 193.67747936243515,
-        "Width": 1063.0411443207304,
-        "Height": 438.02833041151234,
+        "Top": 179.04076833987605,
+        "Width": 1102.9594471095284,
+        "Height": 447.34260106223167,
         "FontSize": 36.0,
-        "InitialTop": 290.07747936243516,
+        "InitialTop": 275.44076833987606,
         "InitialHeight": 394.02833041151234,
         "TextblockHeight": 86.4,
         "Background": "#FFBB87C6"
