@@ -1,11 +1,14 @@
-﻿<?xml version="1.0" encoding="utf-8" ?>
+﻿<?xml version="1.0"?>
 <doc>
   <assembly>
     <name>SpacePartitioning</name>
   </assembly>
   <namespaces>
-    <namespace name="SpacePartitioning.Octree">
-      <category>Octree</category>
+    <namespace name="SpacePartitioning">
+      <category>SpacePartitioning</category>
     </namespace>
   </namespaces>
+  <classes>
+    <class name="SpacePartitioning.Octree" shortname="Octree"/>
+  </classes>
 </doc>
