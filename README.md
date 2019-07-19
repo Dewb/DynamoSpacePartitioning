@@ -8,11 +8,13 @@ A Dynamo package for common spatial search and intersection tests on large amoun
    * 2D and 3D versions
    * Radius queries (Sphere intersection)
    * Nearest neighbor search
+   * Implemented with [Supercluster.KDTree](https://github.com/MathFerret1013/Supercluster.KDTree)
 * Octrees indexed by bounding box
    * 3D only
    * Hit tests (Point intersection)
    * Range queries (Bounding box intersection)
    * Radius queries (Sphere intersection)
+   * Dynamo-specific implementation
 
 ### Future possibilities:
 
