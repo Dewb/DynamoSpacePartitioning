@@ -1,0 +1,780 @@
+{
+  "Uuid": "53936975-f3e8-4081-bb74-6ee34118202c",
+  "IsCustomNode": false,
+  "Description": null,
+  "Name": "KDTree2D Example",
+  "ElementResolver": {
+    "ResolutionMap": {
+      "Point": {
+        "Key": "Autodesk.DesignScript.Geometry.Point",
+        "Value": "ProtoGeometry.dll"
+      },
+      "Math": {
+        "Key": "DSCore.Math",
+        "Value": "DSCoreNodes.dll"
+      },
+      "UV": {
+        "Key": "Autodesk.DesignScript.Geometry.UV",
+        "Value": "ProtoGeometry.dll"
+      }
+    }
+  },
+  "Inputs": [],
+  "Outputs": [],
+  "Nodes": [
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.CodeBlockNodeModel, DynamoCore",
+      "NodeType": "CodeBlockNode",
+      "Code": "u = Math.RandomList(100);\nv = Math.RandomList(100);\nnames = \"id \" + ((1..100) + \"\");\npoints = UV.ByCoordinates(u, v);",
+      "Id": "c2e3e210c63744ceaf66d1da2bc4bed1",
+      "Inputs": [],
+      "Outputs": [
+        {
+          "Id": "578f471efca9470197f10b133927052a",
+          "Name": "",
+          "Description": "u",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "7017b6ed605144d2beba48af7e39a1c6",
+          "Name": "",
+          "Description": "v",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "1a720e6f17e347cbae14cd3a0c71485c",
+          "Name": "",
+          "Description": "names",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "c1a60ca08d964e839726edafc58b2920",
+          "Name": "",
+          "Description": "points",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Disabled",
+      "Description": "Allows for DesignScript code to be authored directly"
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.ZeroTouch.DSFunction, DynamoCore",
+      "NodeType": "FunctionNode",
+      "FunctionSignature": "SpacePartitioning.KDTree2D.FindObjectsWithinRadius@Autodesk.DesignScript.Geometry.UV,double",
+      "Id": "14e376a740e34e3799f7d15fc580c4e0",
+      "Inputs": [
+        {
+          "Id": "0939fe27c0d8458393834494722c07c5",
+          "Name": "kDTree2D",
+          "Description": "SpacePartitioning.KDTree2D",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "9337f02acb69429eb4ea8c8e6fa99e6a",
+          "Name": "testPoint",
+          "Description": "UV",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "1f8d40f835da4063bdd917f5e3035081",
+          "Name": "testRadius",
+          "Description": "double",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "6aea0d3e2716456fa4b2b84f0846f455",
+          "Name": "uvs",
+          "Description": "var",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "27fa38a094734039b2cb57f4eb8d087f",
+          "Name": "objects",
+          "Description": "var",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Auto",
+      "Description": "KDTree2D.FindObjectsWithinRadius (testPoint: UV, testRadius: double): var[]..[]"
+    },
+    {
+      "ConcreteType": "CoreNodeModels.Input.DoubleSlider, CoreNodeModels",
+      "NodeType": "NumberInputNode",
+      "NumberType": "Double",
+      "MaximumValue": 0.2,
+      "MinimumValue": 0.04,
+      "StepValue": 0.001,
+      "InputValue": 0.043000000000000003,
+      "Id": "bdd61e061faf4332bd7f7a8da5b87586",
+      "Inputs": [],
+      "Outputs": [
+        {
+          "Id": "6e727b5f90b549e684fd053a10203a45",
+          "Name": "",
+          "Description": "Double",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Disabled",
+      "Description": "A slider that produces numeric values."
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.CodeBlockNodeModel, DynamoCore",
+      "NodeType": "CodeBlockNode",
+      "Code": "p = UV.ByCoordinates(0.1, 0.1);",
+      "Id": "00a75ea07371402aa1b2858998f16c7d",
+      "Inputs": [],
+      "Outputs": [
+        {
+          "Id": "abdbd4bb4a7b4f05837fa1fde4feed6c",
+          "Name": "",
+          "Description": "p",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Disabled",
+      "Description": "Allows for DesignScript code to be authored directly"
+    },
+    {
+      "ConcreteType": "CoreNodeModels.Watch, CoreNodeModels",
+      "NodeType": "ExtensionNode",
+      "Id": "1ab19b2036c6427188afc52c15679828",
+      "Inputs": [
+        {
+          "Id": "af118e004f6c44da8bee40da7ad2eeea",
+          "Name": "",
+          "Description": "Node to evaluate.",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "4ac3edfed69c44cca9aa9c0bf9f63ce6",
+          "Name": "",
+          "Description": "Watch contents.",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Disabled",
+      "Description": "Visualize the output of node."
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.ZeroTouch.DSFunction, DynamoCore",
+      "NodeType": "FunctionNode",
+      "FunctionSignature": "SpacePartitioning.KDTree2D.FindNearestNeighbor@Autodesk.DesignScript.Geometry.UV",
+      "Id": "0b18e7320f10464da02f2fad8ad3241b",
+      "Inputs": [
+        {
+          "Id": "ddb197b7d32a4b4f91ac59949197f5ea",
+          "Name": "kDTree2D",
+          "Description": "SpacePartitioning.KDTree2D",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "db0374732d9541e6a13bca5961e31824",
+          "Name": "testPoint",
+          "Description": "UV",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "ebc73c624beb43af85358e55598bf374",
+          "Name": "uv",
+          "Description": "var",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "46e3b8628b9843668da0cf4230893392",
+          "Name": "object",
+          "Description": "var",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Auto",
+      "Description": "KDTree2D.FindNearestNeighbor (testPoint: UV): var[]..[]"
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.CodeBlockNodeModel, DynamoCore",
+      "NodeType": "CodeBlockNode",
+      "Code": "p = UV.ByCoordinates(x, y);",
+      "Id": "7dd943da1c7e41e098ca4ab925f767d1",
+      "Inputs": [
+        {
+          "Id": "f61997d381f34ec991665ea376055d0f",
+          "Name": "x",
+          "Description": "x",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "c573a8f576ed4c528c71b07432b3a7f1",
+          "Name": "y",
+          "Description": "y",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "8cf7aee94c824f5795dd818db708ee47",
+          "Name": "",
+          "Description": "p",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Disabled",
+      "Description": "Allows for DesignScript code to be authored directly"
+    },
+    {
+      "ConcreteType": "CoreNodeModels.Watch, CoreNodeModels",
+      "NodeType": "ExtensionNode",
+      "Id": "d533b2e098474893b066dce46d08adb2",
+      "Inputs": [
+        {
+          "Id": "c7655eec57cc47e7b84aa38365da892c",
+          "Name": "",
+          "Description": "Node to evaluate.",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "cc28a32b3e434ed19527f11ce102cc06",
+          "Name": "",
+          "Description": "Watch contents.",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Disabled",
+      "Description": "Visualize the output of node."
+    },
+    {
+      "ConcreteType": "CoreNodeModels.Input.DoubleSlider, CoreNodeModels",
+      "NodeType": "NumberInputNode",
+      "NumberType": "Double",
+      "MaximumValue": 1.0,
+      "MinimumValue": 0.0,
+      "StepValue": 0.0001,
+      "InputValue": 0.8166,
+      "Id": "83f672fb44bd40d89c894785ec4def01",
+      "Inputs": [],
+      "Outputs": [
+        {
+          "Id": "22e16a918eef4b4baf8801e8b3be9c14",
+          "Name": "",
+          "Description": "Double",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Disabled",
+      "Description": "A slider that produces numeric values."
+    },
+    {
+      "ConcreteType": "CoreNodeModels.Input.DoubleSlider, CoreNodeModels",
+      "NodeType": "NumberInputNode",
+      "NumberType": "Double",
+      "MaximumValue": 1.0,
+      "MinimumValue": 0.0,
+      "StepValue": 0.0001,
+      "InputValue": 0.4949,
+      "Id": "95b88f7a77a94ba5b0ebbc531f3f94ec",
+      "Inputs": [],
+      "Outputs": [
+        {
+          "Id": "d85de8d4da864bda9e66b9dea0336a6c",
+          "Name": "",
+          "Description": "Double",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Disabled",
+      "Description": "A slider that produces numeric values."
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.ZeroTouch.DSFunction, DynamoCore",
+      "NodeType": "FunctionNode",
+      "FunctionSignature": "SpacePartitioning.KDTree2D.ByUVsAndObjects@Autodesk.DesignScript.Geometry.UV[],var[]",
+      "Id": "7116846a87bf457e93104a1ffe18db12",
+      "Inputs": [
+        {
+          "Id": "33f1aea3c3394a6fb128b2c372d50c9d",
+          "Name": "uvs",
+          "Description": "UV[]",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "137f9e8ac9374738909b37e3040a1c04",
+          "Name": "objects",
+          "Description": "var[]",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "81e69b60f16847ba9de04e7767f92500",
+          "Name": "KDTree2D",
+          "Description": "KDTree2D",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Auto",
+      "Description": "KDTree2D.ByUVsAndObjects (uvs: UV[], objects: var[]): KDTree2D"
+    },
+    {
+      "ConcreteType": "CoreNodeModels.Watch, CoreNodeModels",
+      "NodeType": "ExtensionNode",
+      "Id": "173f4cc9670a4ecb8ef0b58aa6aa646b",
+      "Inputs": [
+        {
+          "Id": "16281fa81f8446bdb0705787d2dd6291",
+          "Name": "",
+          "Description": "Node to evaluate.",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "df5479f9efcf4dfd9c335a68e271ee13",
+          "Name": "",
+          "Description": "Watch contents.",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Disabled",
+      "Description": "Visualize the output of node."
+    },
+    {
+      "ConcreteType": "CoreNodeModels.Watch, CoreNodeModels",
+      "NodeType": "ExtensionNode",
+      "Id": "e9ab27680ff444d1ad6904f7527088c1",
+      "Inputs": [
+        {
+          "Id": "170b4e03d42342699117c5fdae82af46",
+          "Name": "",
+          "Description": "Node to evaluate.",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "4782c928e6bb45efb093f69f2beb79d5",
+          "Name": "",
+          "Description": "Watch contents.",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Disabled",
+      "Description": "Visualize the output of node."
+    }
+  ],
+  "Connectors": [
+    {
+      "Start": "1a720e6f17e347cbae14cd3a0c71485c",
+      "End": "137f9e8ac9374738909b37e3040a1c04",
+      "Id": "f9e83665801349a4bbc4201d429281fa"
+    },
+    {
+      "Start": "c1a60ca08d964e839726edafc58b2920",
+      "End": "33f1aea3c3394a6fb128b2c372d50c9d",
+      "Id": "3b1cbc3de9a84f1881d487498e141ab4"
+    },
+    {
+      "Start": "6aea0d3e2716456fa4b2b84f0846f455",
+      "End": "af118e004f6c44da8bee40da7ad2eeea",
+      "Id": "362f5e83b10142f19ecf2f315b2220b6"
+    },
+    {
+      "Start": "27fa38a094734039b2cb57f4eb8d087f",
+      "End": "16281fa81f8446bdb0705787d2dd6291",
+      "Id": "0824606cead04ddaa856777bc5ef02ad"
+    },
+    {
+      "Start": "6e727b5f90b549e684fd053a10203a45",
+      "End": "1f8d40f835da4063bdd917f5e3035081",
+      "Id": "71716b0de399460d8dcecc8ca2fe337a"
+    },
+    {
+      "Start": "abdbd4bb4a7b4f05837fa1fde4feed6c",
+      "End": "9337f02acb69429eb4ea8c8e6fa99e6a",
+      "Id": "0926b2fa97894d7ba2977f91fb779d21"
+    },
+    {
+      "Start": "ebc73c624beb43af85358e55598bf374",
+      "End": "c7655eec57cc47e7b84aa38365da892c",
+      "Id": "fa5d393b2f154ba2b776c4606c8179e1"
+    },
+    {
+      "Start": "46e3b8628b9843668da0cf4230893392",
+      "End": "170b4e03d42342699117c5fdae82af46",
+      "Id": "7562c77aa04040248a45ddaf4d35e9ca"
+    },
+    {
+      "Start": "8cf7aee94c824f5795dd818db708ee47",
+      "End": "db0374732d9541e6a13bca5961e31824",
+      "Id": "f648593f6e764db892648ecfcc550398"
+    },
+    {
+      "Start": "22e16a918eef4b4baf8801e8b3be9c14",
+      "End": "f61997d381f34ec991665ea376055d0f",
+      "Id": "88cdf07e33d1483bb971adfa2bc2e17f"
+    },
+    {
+      "Start": "d85de8d4da864bda9e66b9dea0336a6c",
+      "End": "c573a8f576ed4c528c71b07432b3a7f1",
+      "Id": "411addb7b8bb409eb44c1aaa2c5f6c90"
+    },
+    {
+      "Start": "81e69b60f16847ba9de04e7767f92500",
+      "End": "0939fe27c0d8458393834494722c07c5",
+      "Id": "237991daf8b244a09e1a76580c09c4f8"
+    },
+    {
+      "Start": "81e69b60f16847ba9de04e7767f92500",
+      "End": "ddb197b7d32a4b4f91ac59949197f5ea",
+      "Id": "b3f40dd6124c427880522a741ee30779"
+    }
+  ],
+  "Dependencies": [],
+  "PackageDependencies": [],
+  "Bindings": [],
+  "View": {
+    "Dynamo": {
+      "ScaleFactor": 1.0,
+      "HasRunWithoutCrash": true,
+      "IsVisibleInDynamoLibrary": true,
+      "Version": "2.3.0.5536",
+      "RunType": "Automatic",
+      "RunPeriod": "1000"
+    },
+    "Camera": {
+      "Name": "Background Preview",
+      "EyeX": 8.8727016268656342,
+      "EyeY": 7.4983740927949807,
+      "EyeZ": 10.074628111155386,
+      "LookX": -9.52702799029707,
+      "LookY": -5.4183750312836745,
+      "LookZ": -11.887154109536391,
+      "UpX": -0.0783818311994537,
+      "UpY": 0.99211470131436552,
+      "UpZ": -0.097799325015578129
+    },
+    "NodeViews": [
+      {
+        "ShowGeometry": false,
+        "Name": "Code Block",
+        "Id": "c2e3e210c63744ceaf66d1da2bc4bed1",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": -763.48850599227262,
+        "Y": -310.69008034460444
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "KDTree2D.FindObjectsWithinRadius",
+        "Id": "14e376a740e34e3799f7d15fc580c4e0",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": -331.29515524400415,
+        "Y": -43.905653970506933
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "Search Radius",
+        "Id": "bdd61e061faf4332bd7f7a8da5b87586",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": -766.40563674929331,
+        "Y": 4.1801281012553773
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "Test Point",
+        "Id": "00a75ea07371402aa1b2858998f16c7d",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": -763.45486825864623,
+        "Y": 122.86546321392541
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "Watch",
+        "Id": "1ab19b2036c6427188afc52c15679828",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 8.0104184607788511,
+        "Y": 1.3350891901307023
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "KDTree2D.FindNearestNeighbor",
+        "Id": "0b18e7320f10464da02f2fad8ad3241b",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": -216.86268724945035,
+        "Y": 481.685332748665
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "Code Block",
+        "Id": "7dd943da1c7e41e098ca4ab925f767d1",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": -592.24648764759911,
+        "Y": 660.47278937533781
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "Watch",
+        "Id": "d533b2e098474893b066dce46d08adb2",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 142.40203784973096,
+        "Y": 534.90973646706141
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "Test Point U",
+        "Id": "83f672fb44bd40d89c894785ec4def01",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": -762.41282536302072,
+        "Y": 476.36289237682536
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "Test Point V",
+        "Id": "95b88f7a77a94ba5b0ebbc531f3f94ec",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": -763.74343545598128,
+        "Y": 554.868887861461
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "KDTree2D.ByUVsAndObjects",
+        "Id": "7116846a87bf457e93104a1ffe18db12",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": -357.9073571032028,
+        "Y": -353.93780563017089
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "Watch",
+        "Id": "173f4cc9670a4ecb8ef0b58aa6aa646b",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 267.479386587965,
+        "Y": 1.3350891901305886
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "Watch",
+        "Id": "e9ab27680ff444d1ad6904f7527088c1",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 359.47142775677105,
+        "Y": 534.95058507266265
+      }
+    ],
+    "Annotations": [
+      {
+        "Id": "707385beec2e45a69b36760973087150",
+        "Title": "1. Create 100 points on a surface and give them names",
+        "Nodes": [
+          "c2e3e210c63744ceaf66d1da2bc4bed1"
+        ],
+        "Left": -773.48850599227262,
+        "Top": -493.49008034460445,
+        "Width": 314.4,
+        "Height": 320.20000000000005,
+        "FontSize": 36.0,
+        "InitialTop": -310.69008034460444,
+        "InitialHeight": 145.0,
+        "TextblockHeight": 172.8,
+        "Background": "#FFC1D676"
+      },
+      {
+        "Id": "5625564a46de44eebd83a5df3d3ce367",
+        "Title": "2. Fill a KDTree2D with the points",
+        "Nodes": [
+          "7116846a87bf457e93104a1ffe18db12"
+        ],
+        "Left": -367.9073571032028,
+        "Top": -493.53780563017085,
+        "Width": 243.2,
+        "Height": 257.79999999999995,
+        "FontSize": 36.0,
+        "InitialTop": -353.93780563017089,
+        "InitialHeight": 145.0,
+        "TextblockHeight": 129.6,
+        "Background": "#FFA4E1FF"
+      },
+      {
+        "Id": "3347ec70a5484107a3db5175e911b463",
+        "Title": "3. Use the KDTree2D to quickly find all the points within a certain distance from a test point",
+        "Nodes": [
+          "00a75ea07371402aa1b2858998f16c7d",
+          "bdd61e061faf4332bd7f7a8da5b87586",
+          "14e376a740e34e3799f7d15fc580c4e0",
+          "1ab19b2036c6427188afc52c15679828",
+          "173f4cc9670a4ecb8ef0b58aa6aa646b"
+        ],
+        "Left": -776.40563674929331,
+        "Top": -140.30565397050694,
+        "Width": 1159.4850233372581,
+        "Height": 355.77111718443234,
+        "FontSize": 36.0,
+        "InitialTop": -43.905653970506933,
+        "InitialHeight": 311.77111718443234,
+        "TextblockHeight": 86.4,
+        "Background": "#FFBB87C6"
+      },
+      {
+        "Id": "2d1b320a7c654a298dc66394392c9f10",
+        "Title": "4. Use the KDTree2D to quickly find the closest point in the original set to a test point",
+        "Nodes": [
+          "0b18e7320f10464da02f2fad8ad3241b",
+          "7dd943da1c7e41e098ca4ab925f767d1",
+          "d533b2e098474893b066dce46d08adb2",
+          "83f672fb44bd40d89c894785ec4def01",
+          "95b88f7a77a94ba5b0ebbc531f3f94ec",
+          "e9ab27680ff444d1ad6904f7527088c1"
+        ],
+        "Left": -773.74343545598128,
+        "Top": 379.96289237682538,
+        "Width": 1221.6148632127524,
+        "Height": 382.70989699851242,
+        "FontSize": 36.0,
+        "InitialTop": 476.36289237682536,
+        "InitialHeight": 329.10989699851245,
+        "TextblockHeight": 86.4,
+        "Background": "#FF48B9FF"
+      },
+      {
+        "Id": "42859ce6cfe44837b35e24fd16ea147f",
+        "Title": "Todo: create 3D visualization of the UV points on an interesting surface :)",
+        "Nodes": [],
+        "Left": 903.51101102281166,
+        "Top": 102.46145625508495,
+        "Width": 0.0,
+        "Height": 0.0,
+        "FontSize": 36.0,
+        "InitialTop": 0.0,
+        "InitialHeight": 0.0,
+        "TextblockHeight": 0.0,
+        "Background": "#FFC1D676"
+      }
+    ],
+    "X": 497.12251409021871,
+    "Y": 313.5359087313484,
+    "Zoom": 0.60122796620338814
+  }
+}

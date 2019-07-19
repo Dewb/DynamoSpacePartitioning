@@ -10,5 +10,7 @@
   </namespaces>
   <classes>
     <class name="SpacePartitioning.Octree" shortname="Octree"/>
+    <class name="SpacePartitioning.KDTree2D" shortname="KDTree2D"/>
+    <class name="SpacePartitioning.KDTree3D" shortname="KDTree3D"/>
   </classes>
 </doc>

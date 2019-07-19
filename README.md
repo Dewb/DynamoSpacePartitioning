@@ -4,22 +4,28 @@ A Dynamo package for common spatial search and intersection tests on large amoun
 
 ### Currently supported:
 
-* Octrees
+* K-D trees indexed by points
+   * 2D and 3D versions
+   * Radius queries (Sphere intersection)
+   * Nearest neighbor search
+* Octrees indexed by bounding box
+   * 3D only
    * Hit tests (Point intersection)
    * Range queries (Bounding box intersection)
    * Radius queries (Sphere intersection)
 
 ### Future possibilities:
 
-* Octrees
-   * Nearest neighbor search
-   * Ray intersection
-   * Visibility tests (Frustum intersection)
 * K-D trees
-   * Same complement of queries with different performance characteristics
-* 2D optimized versions of Octrees and K-D trees
+   * Arbitrary dimensions
+* Octrees
+   * Ray intersection
+   * Nearest neighbor search
+   * Visibility tests (Frustum intersection)
+* Quadtrees (2D Octree)
 * Tuning of tree parameters for advanced users
 * Fancier implementations (skip octrees, etc.)
+* Memory optimizations
 
 ## In Use
 *Examples/Octree Simple Example.dyn*
