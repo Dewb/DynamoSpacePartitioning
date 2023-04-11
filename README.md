@@ -1,3 +1,12 @@
+
+***This was an early 2019 demo of an approach to space partitioning in Dynamo.***
+
+***The VASA package now offers much more sophisticated tools for spatial analysis:***
+* VASA Intro video: https://www.youtube.com/watch?v=wE4gk0FYWDw
+* Through the Interface blog posts on VASA: https://www.keanw.com/vasa/
+
+---
+
 # Dynamo Space Partitioning
 
 A Dynamo package for common spatial search and intersection tests on large amounts of objects using tree data structures. The implementations here are currently naive and unoptimized, but they should still be considerably faster than brute force strategies.
